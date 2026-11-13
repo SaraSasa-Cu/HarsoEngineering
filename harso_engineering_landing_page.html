@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harso Engineering | Solusi Engineering Profesional</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#082B55',
+                        primaryDark: '#051b36',
+                        accent: '#FFC400',
+                        accentHover: '#e6b000',
+                        bgLight: '#F2F7FC',
+                        textMain: '#172B4D',
+                        textMuted: '#64748B',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'hover': '0 10px 30px rgba(8, 43, 85, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Styles for overlays and specific tweaks not covered by Tailwind config easily */
+        .group:hover .overlay {
+            opacity: 1;
+        }
+        
+        /* Ensure smooth rendering of rounded elements */
+        img {
+            -webkit-user-drag: none;
+        }
+
+        /* Connecting line for timeline */
+        @media (min-width: 768px) {
+            .timeline-line::after {
+                content: '';
+                position: absolute;
+                top: 2rem;
+                left: calc(50% + 2rem);
+                width: calc(100% - 4rem);
+                height: 2px;
+                background-color: #cbd5e1;
+                z-index: 0;
+            }
+            .timeline-step:last-child .timeline-line::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-textMain antialiased bg-white overflow-x-hidden">
+
+    <!-- 1. NAVIGATION BAR -->
+    <nav class="bg-primary text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-helmet-safety text-accent text-2xl"></i>
+                    <span class="font-bold text-2xl tracking-tight">Harso<span class="text-accent">Eng</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#beranda" class="hover:text-accent transition-colors text-sm font-medium">Beranda</a>
+                    <a href="#layanan" class="hover:text-accent transition-colors text-sm font-medium">Layanan</a>
+                    <a href="#tentang" class="hover:text-accent transition-colors text-sm font-medium">Tentang Kami</a>
+                    <a href="#keunggulan" class="hover:text-accent transition-colors text-sm font-medium">Keunggulan</a>
+                    <a href="#galeri" class="hover:text-accent transition-colors text-sm font-medium">Galeri</a>
+                    <a href="#kontak" class="bg-accent text-primary px-6 py-2.5 rounded-full font-semibold hover:bg-accentHover transition-colors shadow-sm">Hubungi Kami</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white hover:text-accent focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Panel (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-primaryDark border-t border-blue-900 absolute w-full">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg">
+                <a href="#beranda" class="block px-3 py-2 rounded-md text-base font-medium hover:text-accent hover:bg-blue-900 transition-colors">Beranda</a>
+                <a href="#layanan" class="block px-3 py-2 rounded-md text-base font-medium hover:text-accent hover:bg-blue-900 transition-colors">Layanan</a>
+                <a href="#tentang" class="block px-3 py-2 rounded-md text-base font-medium hover:text-accent hover:bg-blue-900 transition-colors">Tentang Kami</a>
+                <a href="#keunggulan" class="block px-3 py-2 rounded-md text-base font-medium hover:text-accent hover:bg-blue-900 transition-colors">Keunggulan</a>
+                <a href="#galeri" class="block px-3 py-2 rounded-md text-base font-medium hover:text-accent hover:bg-blue-900 transition-colors">Galeri</a>
+                <a href="#kontak" class="block mt-4 text-center bg-accent text-primary px-3 py-2 rounded-md text-base font-bold hover:bg-accentHover transition-colors">Hubungi Kami</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. HERO SECTION -->
+    <section id="beranda" class="bg-primary pt-16 pb-24 relative overflow-hidden">
+        <!-- Abstract background shapes for premium feel -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-blue-800 opacity-20 blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-accent opacity-10 blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="space-y-8">
+                    <div class="inline-block bg-blue-900 text-accent font-medium px-4 py-1.5 rounded-full text-sm mb-2 border border-blue-800">
+                        Top Engineering & Home Services
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                        Solusi Cepat untuk Perbaikan <span class="text-accent">Listrik & Peralatan</span> Anda
+                    </h1>
+                    <p class="text-gray-300 text-lg md:text-xl max-w-lg">
+                        Layanan home service dan engineering terpercaya untuk menangani instalasi serta perawatan fasilitas bangunan Anda secara profesional.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <a href="#kontak" class="bg-accent text-primary px-8 py-3.5 rounded-xl font-bold text-center hover:bg-accentHover hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-calendar-check"></i> Konsultasi Sekarang
+                        </a>
+                        <a href="#kontak" class="bg-transparent border-2 border-white text-white px-8 py-3.5 rounded-xl font-bold text-center hover:bg-white hover:text-primary transition-all flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Hubungi via WhatsApp
+                        </a>
+                    </div>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="pt-8 flex flex-wrap gap-6 text-sm text-gray-300 font-medium">
+                        <div class="flex items-center gap-2">
+                            <div class="bg-blue-800 p-2 rounded-full text-accent"><i class="fa-solid fa-user-tie"></i></div>
+                            <span>Tenaga Profesional</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="bg-blue-800 p-2 rounded-full text-accent"><i class="fa-solid fa-medal"></i></div>
+                            <span>Hasil Berkualitas</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="bg-blue-800 p-2 rounded-full text-accent"><i class="fa-solid fa-clock"></i></div>
+                            <span>Pelayanan Terpercaya</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Image -->
+                <div class="relative mt-10 lg:mt-0">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-blue-900 border-opacity-50">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Professional Engineer at work" class="w-full h-auto object-cover object-center h-[500px]">
+                        <!-- Dark gradient overlay for better integration -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+                    </div>
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl flex items-center gap-4 border-l-4 border-accent animate-bounce" style="animation-duration: 3s;">
+                        <div class="bg-bgLight p-3 rounded-full text-primary text-xl">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-textMuted font-medium uppercase tracking-wider">Area Layanan</p>
+                            <p class="font-bold text-textMain">Denpasar & Sekitarnya</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. OUR SERVICES -->
+    <section id="layanan" class="py-20 bg-bgLight">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h4 class="text-accent font-bold uppercase tracking-wider text-sm mb-2">Layanan Kami</h4>
+                <h2 class="text-3xl md:text-4xl font-bold text-textMain mb-4">Layanan Profesional untuk Kebutuhan Anda</h2>
+                <p class="text-textMuted text-lg">Kami menyediakan berbagai layanan teknis komprehensif yang dikerjakan oleh ahli di bidangnya.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-soft hover:shadow-hover hover:-translate-y-2 transition-all duration-300 group cursor-pointer">
+                    <div class="w-14 h-14 bg-bgLight rounded-xl flex items-center justify-center text-primary text-2xl mb-6 group-hover:bg-accent transition-colors duration-300">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-textMain mb-3 group-hover:text-primary transition-colors">Instalasi Listrik</h3>
+                    <p class="text-textMuted text-sm leading-relaxed">Pemasangan panel baru, perbaikan arus pendek, grounding, dan peremajaan instalasi kelistrikan gedung.</p>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-soft hover:shadow-hover hover:-translate-y-2 transition-all duration-300 group cursor-pointer">
+                    <div class="w-14 h-14 bg-bgLight rounded-xl flex items-center justify-center text-primary text-2xl mb-6 group-hover:bg-accent transition-colors duration-300">
+                        <i class="fa-solid fa-snowflake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-textMain mb-3 group-hover:text-primary transition-colors">Service AC</h3>
+                    <p class="text-textMuted text-sm leading-relaxed">Cuci AC, isi freon, perbaikan AC tidak dingin atau bocor untuk hunian maupun area komersial.</p>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-soft hover:shadow-hover hover:-translate-y-2 transition-all duration-300 group cursor-pointer">
+                    <div class="w-14 h-14 bg-bgLight rounded-xl flex items-center justify-center text-primary text-2xl mb-6 group-hover:bg-accent transition-colors duration-300">
+                        <i class="fa-solid fa-plug-circle-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-textMain mb-3 group-hover:text-primary transition-colors">Alat Elektronik</h3>
+                    <p class="text-textMuted text-sm leading-relaxed">Reparasi peralatan rumah tangga seperti mesin cuci, kulkas, pompa air, dan pemanas air.</p>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-soft hover:shadow-hover hover:-translate-y-2 transition-all duration-300 group cursor-pointer">
+                    <div class="w-14 h-14 bg-bgLight rounded-xl flex items-center justify-center text-primary text-2xl mb-6 group-hover:bg-accent transition-colors duration-300">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-textMain mb-3 group-hover:text-primary transition-colors">Inspeksi Teknis</h3>
+                    <p class="text-textMuted text-sm leading-relaxed">Pengecekan kelayakan sistem utilitas bangunan untuk memastikan standar keamanan terpenuhi.</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#kontak" class="inline-flex items-center justify-center text-primary font-bold hover:text-accent transition-colors">
+                    Lihat Semua Layanan <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ABOUT US -->
+    <section id="tentang" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Image -->
+                <div class="relative">
+                    <div class="absolute inset-0 bg-accent rounded-2xl translate-x-4 translate-y-4 -z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Harso Engineering Team" class="rounded-2xl shadow-xl w-full h-[450px] object-cover">
+                    
+                    <!-- Stats overlay -->
+                    <div class="absolute -left-6 top-1/2 -translate-y-1/2 bg-primary text-white p-6 rounded-xl shadow-xl hidden sm:block">
+                        <div class="text-3xl font-bold text-accent mb-1">10+</div>
+                        <div class="text-sm font-medium">Tahun<br>Pengalaman</div>
+                    </div>
+                </div>
+                
+                <!-- Right Content -->
+                <div>
+                    <h4 class="text-accent font-bold uppercase tracking-wider text-sm mb-2">Tentang Kami</h4>
+                    <h2 class="text-3xl md:text-4xl font-bold text-textMain mb-6">Mengenal Harso Engineering</h2>
+                    <p class="text-textMuted text-lg mb-6 leading-relaxed">
+                        Harso Engineering adalah perusahaan penyedia jasa perbaikan dan pemeliharaan instalasi teknis yang berdedikasi tinggi. Berawal dari komitmen untuk memberikan layanan aman dan handal, kami telah melayani ratusan klien mulai dari residensial hingga komersial di wilayah Denpasar dan sekitarnya.
+                    </p>
+                    <p class="text-textMuted text-lg mb-8 leading-relaxed">
+                        Tim teknisi kami dibekali dengan sertifikasi dan peralatan modern untuk memastikan setiap masalah kelistrikan dan peralatan Anda terselesaikan dengan presisi, efisien, serta garansi kepuasan.
+                    </p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center text-accent"><i class="fa-solid fa-check text-xs"></i></div>
+                            <span class="font-medium text-textMain">Standar Keselamatan (K3) Terjamin</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center text-accent"><i class="fa-solid fa-check text-xs"></i></div>
+                            <span class="font-medium text-textMain">Suku Cadang Berkualitas & Asli</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center text-accent"><i class="fa-solid fa-check text-xs"></i></div>
+                            <span class="font-medium text-textMain">Solusi Efisien Tepat Sasaran</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#kontak" class="bg-primary text-white px-8 py-3.5 rounded-xl font-bold text-center hover:bg-primaryDark hover:shadow-lg transition-all inline-block">
+                        Selengkapnya tentang Kami
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. HOW WE WORK -->
+    <section class="py-20 bg-bgLight">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h4 class="text-accent font-bold uppercase tracking-wider text-sm mb-2">Sistem Kami</h4>
+                <h2 class="text-3xl md:text-4xl font-bold text-textMain mb-4">Proses Kerja Kami</h2>
+                <p class="text-textMuted text-lg">Langkah praktis, transparan, dan terukur untuk menyelesaikan setiap permasalahan instalasi Anda.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-start relative">
+                <!-- Step 1 -->
+                <div class="timeline-step flex-1 text-center relative z-10 w-full mb-8 md:mb-0 px-2 timeline-line">
+                    <div class="w-16 h-16 mx-auto bg-white border-4 border-bgLight shadow-md rounded-full flex items-center justify-center text-primary text-2xl mb-4 relative z-10 transition-transform hover:scale-110">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <h3 class="font-bold text-textMain mb-2">1. Konsultasi</h3>
+                    <p class="text-sm text-textMuted">Ceritakan kendala yang Anda alami melalui WA atau telepon.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="timeline-step flex-1 text-center relative z-10 w-full mb-8 md:mb-0 px-2 timeline-line">
+                    <div class="w-16 h-16 mx-auto bg-white border-4 border-bgLight shadow-md rounded-full flex items-center justify-center text-primary text-2xl mb-4 relative z-10 transition-transform hover:scale-110">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <h3 class="font-bold text-textMain mb-2">2. Survey & Analisis</h3>
+                    <p class="text-sm text-textMuted">Tim kami datang untuk menganalisis langsung di lokasi.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="timeline-step flex-1 text-center relative z-10 w-full mb-8 md:mb-0 px-2 timeline-line">
+                    <div class="w-16 h-16 mx-auto bg-white border-4 border-bgLight shadow-md rounded-full flex items-center justify-center text-primary text-2xl mb-4 relative z-10 transition-transform hover:scale-110">
+                        <i class="fa-solid fa-file-signature"></i>
+                    </div>
+                    <h3 class="font-bold text-textMain mb-2">3. Penawaran</h3>
+                    <p class="text-sm text-textMuted">Estimasi biaya dan waktu pengerjaan yang transparan.</p>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="timeline-step flex-1 text-center relative z-10 w-full mb-8 md:mb-0 px-2 timeline-line">
+                    <div class="w-16 h-16 mx-auto bg-white border-4 border-bgLight shadow-md rounded-full flex items-center justify-center text-accent text-2xl mb-4 relative z-10 transition-transform hover:scale-110">
+                        <i class="fa-solid fa-screwdriver-wrench text-primary"></i>
+                    </div>
+                    <h3 class="font-bold text-textMain mb-2">4. Pelaksanaan</h3>
+                    <p class="text-sm text-textMuted">Pengerjaan dengan standar operasi prosedur yang aman.</p>
+                </div>
+                
+                <!-- Step 5 -->
+                <div class="timeline-step flex-1 text-center relative z-10 w-full px-2 timeline-line">
+                    <div class="w-16 h-16 mx-auto bg-primary border-4 border-bgLight shadow-md rounded-full flex items-center justify-center text-accent text-2xl mb-4 relative z-10 transition-transform hover:scale-110">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="font-bold text-textMain mb-2">5. Penyelesaian</h3>
+                    <p class="text-sm text-textMuted">Uji fungsi, serah terima, dan garansi layanan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. WHY CHOOSE US -->
+    <section id="keunggulan" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h4 class="text-accent font-bold uppercase tracking-wider text-sm mb-2">Keunggulan Kami</h4>
+                <h2 class="text-3xl md:text-4xl font-bold text-textMain mb-4">Mengapa Memilih Harso Engineering?</h2>
+                <p class="text-textMuted text-lg">Kami memprioritaskan keamanan, kenyamanan, dan kepuasan pelanggan dalam setiap proyek.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Point 1 -->
+                <div class="text-center p-6 border border-gray-100 rounded-2xl hover:shadow-md transition-shadow">
+                    <div class="w-20 h-20 mx-auto rounded-full border-2 border-accent flex items-center justify-center text-primary text-3xl mb-6 bg-yellow-50">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-textMain mb-2">Tenaga Profesional</h3>
+                    <p class="text-textMuted text-sm">Teknisi berpengalaman dan tersertifikasi di bidang kelistrikan & AC.</p>
+                </div>
+                
+                <!-- Point 2 -->
+                <div class="text-center p-6 border border-gray-100 rounded-2xl hover:shadow-md transition-shadow">
+                    <div class="w-20 h-20 mx-auto rounded-full border-2 border-accent flex items-center justify-center text-primary text-3xl mb-6 bg-yellow-50">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-textMain mb-2">Pengerjaan Berkualitas</h3>
+                    <p class="text-textMuted text-sm">Hasil rapi, tahan lama, menggunakan material berstandar SNI.</p>
+                </div>
+                
+                <!-- Point 3 -->
+                <div class="text-center p-6 border border-gray-100 rounded-2xl hover:shadow-md transition-shadow">
+                    <div class="w-20 h-20 mx-auto rounded-full border-2 border-accent flex items-center justify-center text-primary text-3xl mb-6 bg-yellow-50">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-textMain mb-2">Pelayanan Responsif</h3>
+                    <p class="text-textMuted text-sm">Admin yang ramah, penjadwalan cepat, dan teknisi datang tepat waktu.</p>
+                </div>
+                
+                <!-- Point 4 -->
+                <div class="text-center p-6 border border-gray-100 rounded-2xl hover:shadow-md transition-shadow">
+                    <div class="w-20 h-20 mx-auto rounded-full border-2 border-accent flex items-center justify-center text-primary text-3xl mb-6 bg-yellow-50">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-textMain mb-2">Harga Kompetitif</h3>
+                    <p class="text-textMuted text-sm">Transparan sejak awal tanpa ada biaya tersembunyi, sangat terjangkau.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. GALLERY / PORTFOLIO -->
+    <section id="galeri" class="py-20 bg-bgLight">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div class="max-w-2xl">
+                    <h4 class="text-accent font-bold uppercase tracking-wider text-sm mb-2">Portfolio</h4>
+                    <h2 class="text-3xl md:text-4xl font-bold text-textMain mb-4">Dokumentasi Proyek Kami</h2>
+                    <p class="text-textMuted text-lg">Beberapa hasil pekerjaan tim ahli Harso Engineering di berbagai lokasi.</p>
+                </div>
+                <div class="mt-6 md:mt-0">
+                    <a href="#" class="text-primary font-bold hover:text-accent transition-colors flex items-center gap-2">
+                        Lihat Lebih Banyak <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Image 1 -->
+                <div class="relative group overflow-hidden rounded-2xl aspect-[4/3] bg-gray-200 cursor-pointer shadow-soft">
+                    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Instalasi Panel Listrik" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="overlay absolute inset-0 bg-primary/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="bg-accent text-primary text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Komersial</span>
+                            <h3 class="text-white font-bold text-xl">Instalasi Panel Listrik</h3>
+                            <p class="text-gray-300 text-sm mt-1">Gedung Perkantoran Denpasar</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image 2 -->
+                <div class="relative group overflow-hidden rounded-2xl aspect-[4/3] bg-gray-200 cursor-pointer shadow-soft">
+                    <img src="https://images.unsplash.com/photo-1574342410313-097561f6bbbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Maintenance HVAC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="overlay absolute inset-0 bg-primary/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="bg-accent text-primary text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Residensial</span>
+                            <h3 class="text-white font-bold text-xl">Maintenance HVAC & AC</h3>
+                            <p class="text-gray-300 text-sm mt-1">Perumahan Jimbaran</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image 3 -->
+                <div class="relative group overflow-hidden rounded-2xl aspect-[4/3] bg-gray-200 cursor-pointer shadow-soft">
+                    <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Inspeksi Kelistrikan" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="overlay absolute inset-0 bg-primary/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="bg-accent text-primary text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Industri</span>
+                            <h3 class="text-white font-bold text-xl">Inspeksi Kelistrikan Pabrik</h3>
+                            <p class="text-gray-300 text-sm mt-1">Area Industri Gianyar</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image 4 -->
+                <div class="relative group overflow-hidden rounded-2xl aspect-[4/3] bg-gray-200 cursor-pointer shadow-soft">
+                    <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Renovasi Utilitas" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="overlay absolute inset-0 bg-primary/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="bg-accent text-primary text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Komersial</span>
+                            <h3 class="text-white font-bold text-xl">Renovasi Utilitas Cafe</h3>
+                            <p class="text-gray-300 text-sm mt-1">Canggu</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image 5 -->
+                <div class="relative group overflow-hidden rounded-2xl aspect-[4/3] bg-gray-200 cursor-pointer shadow-soft">
+                    <img src="https://images.unsplash.com/photo-1590496793907-96a84c017d84?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Instalasi Pompa Air" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="overlay absolute inset-0 bg-primary/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="bg-accent text-primary text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Residensial</span>
+                            <h3 class="text-white font-bold text-xl">Instalasi Pompa Sentral</h3>
+                            <p class="text-gray-300 text-sm mt-1">Villa Seminyak</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image 6 -->
+                <div class="relative group overflow-hidden rounded-2xl aspect-[4/3] bg-gray-200 cursor-pointer shadow-soft">
+                    <img src="https://images.unsplash.com/photo-1534398079543-7ae6d016b86a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Maintenance Rutin" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="overlay absolute inset-0 bg-primary/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="bg-accent text-primary text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Komersial</span>
+                            <h3 class="text-white font-bold text-xl">Maintenance Rutin Gedung</h3>
+                            <p class="text-gray-300 text-sm mt-1">Hotel Sanur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. BOTTOM CTA -->
+    <section class="py-20 bg-primary relative overflow-hidden">
+        <!-- Abstract geometry -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border-[40px] border-blue-800 rounded-full opacity-20 pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                Butuh Solusi Engineering yang <span class="text-accent">Profesional?</span>
+            </h2>
+            <p class="text-gray-300 text-lg mb-10 max-w-2xl mx-auto">
+                Jangan biarkan masalah instalasi mengganggu aktivitas Anda. Tim Harso Engineering siap datang, memeriksa, dan memperbaiki dengan cepat dan tepat.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#kontak" class="bg-accent text-primary px-8 py-4 rounded-xl font-bold hover:bg-accentHover hover:-translate-y-1 transition-all flex items-center justify-center gap-2 shadow-lg">
+                    <i class="fa-solid fa-phone"></i> Hubungi Kami Sekarang
+                </a>
+                <a href="https://wa.me/6281234567890" target="_blank" class="bg-green-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-green-700 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 shadow-lg">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp Konsultasi
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. FOOTER -->
+    <footer id="kontak" class="bg-primaryDark text-gray-300 pt-20 pb-10 border-t border-blue-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Col 1: Brand -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-helmet-safety text-accent text-3xl"></i>
+                        <span class="font-bold text-3xl text-white tracking-tight">Harso<span class="text-accent">Eng</span></span>
+                    </div>
+                    <p class="text-sm leading-relaxed text-gray-400">
+                        Mitra terpercaya Anda untuk segala kebutuhan perbaikan, perawatan, dan instalasi sistem kelistrikan serta utilitas bangunan dengan standar keamanan tinggi.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center text-white hover:bg-accent hover:text-primary transition-colors">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center text-white hover:bg-accent hover:text-primary transition-colors">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center text-white hover:bg-accent hover:text-primary transition-colors">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 uppercase tracking-wider">Tautan Cepat</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#beranda" class="hover:text-accent transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs text-accent"></i> Beranda</a></li>
+                        <li><a href="#tentang" class="hover:text-accent transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs text-accent"></i> Tentang Kami</a></li>
+                        <li><a href="#layanan" class="hover:text-accent transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs text-accent"></i> Layanan</a></li>
+                        <li><a href="#galeri" class="hover:text-accent transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs text-accent"></i> Portfolio Proyek</a></li>
+                        <li><a href="#keunggulan" class="hover:text-accent transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs text-accent"></i> Keunggulan</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Col 3: Services -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 uppercase tracking-wider">Layanan Kami</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-sm"></i> Pemasangan Instalasi Listrik</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-sm"></i> Perbaikan & Maintenance AC</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-sm"></i> Reparasi Mesin Cuci & Kulkas</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-sm"></i> Instalasi Pompa Air</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-sm"></i> Inspeksi Kelayakan Utilitas</li>
+                    </ul>
+                </div>
+                
+                <!-- Col 4: Contact -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 uppercase tracking-wider">Hubungi Kami</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4">
+                            <i class="fa-solid fa-location-dot text-accent mt-1 text-xl"></i>
+                            <div>
+                                <p class="text-white font-medium mb-1">Kantor Pusat</p>
+                                <p class="text-gray-400 text-sm">Jl. Raya Denpasar No. 123,<br>Kota Denpasar, Bali 80111</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <i class="fa-solid fa-phone-volume text-accent text-xl"></i>
+                            <div>
+                                <p class="text-white font-medium">Telepon / WhatsApp</p>
+                                <a href="tel:+6281234567890" class="text-gray-400 hover:text-white transition-colors text-sm">+62 812-3456-7890</a>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <i class="fa-solid fa-envelope text-accent text-xl"></i>
+                            <div>
+                                <p class="text-white font-medium">Email</p>
+                                <a href="mailto:info@harsoengineering.com" class="text-gray-400 hover:text-white transition-colors text-sm">info@harsoengineering.com</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-blue-900 pt-8 mt-8 text-center sm:flex sm:justify-between sm:text-left items-center">
+                <p class="text-sm text-gray-500 mb-4 sm:mb-0">
+                    &copy; 2026 Harso Engineering. All rights reserved.
+                </p>
+                <div class="flex justify-center gap-4 text-sm text-gray-500">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const links = menu.querySelectorAll('a');
+
+            // Toggle menu
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            // Close menu when clicking a link
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
